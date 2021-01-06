@@ -25,7 +25,7 @@ var ws = require('ws');
 var kurento = require('kurento-client');
 var fs    = require('fs');
 var https = require('https');
-kurento.register('kurento-module-chroma');
+kurento.register('kurento-module-meetrixkurentohelloworld');
 
 var argv = minimist(process.argv.slice(2), {
     default: {
