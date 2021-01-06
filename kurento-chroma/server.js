@@ -237,15 +237,8 @@ function createMediaElements(pipeline, ws, callback) {
             return callback(error);
         }
 
-        var options = {
-            window: kurento.getComplexType('chroma.WindowParam')({
-                topRightCornerX: 5,
-                topRightCornerY: 5,
-                width: 30,
-                height: 30
-            })
-        }
-        pipeline.create('chroma.ChromaFilter', options, function(error, filter) {
+        var options = {}
+        pipeline.create('meetrixkurentohelloworld.MeetrixKurentoHelloWorld', options, function(error, filter) {
             if (error) {
                 return callback(error);
             }
@@ -261,12 +254,10 @@ function connectMediaElements(webRtcEndpoint, filter, callback) {
             return callback(error);
         }
 
-        // const appServerUrl = url.format(asUrl);
-        const appServerUrl = "http://files.openvidu.io";
-        filter.setBackground(appServerUrl + '/img/mario.jpg', function(error) {
-            if (error) {
-                return callback(error);
-            }
+        //filter.setBackground(url.format(asUrl) + 'img/mario.jpg', function(error) {
+            //if (error) {
+                //return callback(error);
+            //}
 
             filter.connect(webRtcEndpoint, function(error) {
                 if (error) {
@@ -276,7 +267,7 @@ function connectMediaElements(webRtcEndpoint, filter, callback) {
                 return callback(null);
             });
         });
-    });
+    //});
 }
 
 function stop(sessionId) {
